@@ -1,8 +1,12 @@
 import 'dotenv/config';
+import fs from 'node:fs';
 import path from 'node:path';
 import { loadConfig } from './config/index.js';
 import { createDatabase } from './db/index.js';
-import { createClient } from './bot/index.js';
+import { createClient, registerCommands } from './bot/index.js';
+import { initOnboarding } from './modules/onboarding/index.js';
+import { initChannels } from './modules/channels/index.js';
+import { initAnnouncements, getAnnouncementCommands } from './modules/announcements/index.js';
 
 async function main() {
   // 1. Load config
@@ -12,27 +16,47 @@ async function main() {
   console.log(`Loaded config for org: ${config.org.name}`);
 
   // 2. Init database
-  const dbPath = process.env.CLUBCLAW_DB || path.resolve(process.cwd(), 'data', 'clubclaw.db');
+  const dataDir = path.resolve(process.cwd(), 'data');
+  if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+  const dbPath = process.env.CLUBCLAW_DB || path.join(dataDir, 'clubclaw.db');
   const db = createDatabase(dbPath);
   console.log('Database initialized');
 
   // 3. Create Discord client
   const client = createClient();
 
-  client.once('ready', (c) => {
+  // 4. Init modules (register event listeners before login)
+  initOnboarding(client, config, db);
+  initChannels(client, config, db);
+  initAnnouncements(client, config, db);
+
+  // 5. Register slash commands on ready
+  client.once('ready', async (c) => {
     console.log(`Logged in as ${c.user.tag}`);
+
+    const commands = [...getAnnouncementCommands()];
+    if (commands.length > 0) {
+      await registerCommands(
+        config.discord.token,
+        c.user.id,
+        config.discord.guild_id,
+        commands
+      );
+    }
   });
 
-  // 4. Login
+  // 6. Login
   await client.login(config.discord.token);
 
   // Graceful shutdown
-  process.on('SIGINT', () => {
+  const shutdown = () => {
     console.log('Shutting down...');
     client.destroy();
     db.close();
     process.exit(0);
-  });
+  };
+  process.on('SIGINT', shutdown);
+  process.on('SIGTERM', shutdown);
 }
 
 main().catch((err) => {
