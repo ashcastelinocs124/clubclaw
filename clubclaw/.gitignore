@@ -1,6 +1,4 @@
-clubclaw.yaml
-.env
 node_modules/
 dist/
 data/
-*.db
+.env
