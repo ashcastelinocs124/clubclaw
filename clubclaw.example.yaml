@@ -1,0 +1,48 @@
+# ClubClaw Configuration
+# Copy this file to clubclaw.yaml and fill in your values.
+
+org:
+  name: "My Club"
+  description: "A student organization"
+
+discord:
+  token: "${DISCORD_BOT_TOKEN}"
+  guild_id: "YOUR_GUILD_ID_HERE"
+
+onboarding:
+  welcome_channel: "welcome"
+  welcome_message: "Hey {member}, welcome to {org}! React below to pick your team."
+  verification:
+    enabled: true
+    method: "reaction"
+    role: "Member"
+  roles:
+    - name: "Team A"
+      emoji: "🅰️"
+      description: "First team"
+    - name: "Team B"
+      emoji: "🅱️"
+      description: "Second team"
+
+channels:
+  categories:
+    - name: "Teams"
+      channels:
+        - name: "team-a"
+          access: ["Team A"]
+        - name: "team-b"
+          access: ["Team B"]
+  auto_archive:
+    enabled: true
+    inactive_days: 30
+
+announcements:
+  channel: "announcements"
+  scheduled:
+    - message: "Weekly meeting reminder!"
+      cron: "0 10 * * WED"
+
+ai:
+  enabled: false
+  provider: "anthropic"
+  features: []
