@@ -51,7 +51,9 @@ export const AnnouncementsSchema = z.object({
 
 export const AiSchema = z.object({
   enabled: z.boolean().default(false),
-  provider: z.enum(['anthropic', 'openai']).default('anthropic'),
+  provider: z.enum(['anthropic', 'openai']).default('openai'),
+  model: z.string().default('gpt-4o-mini'),
+  knowledge_file: z.string().default('knowledge.md'),
   features: z.array(z.string()).default([]),
 });
 
