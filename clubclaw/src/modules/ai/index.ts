@@ -25,6 +25,7 @@ export function initAi(
   initOpenAI(apiKey);
 
   const knowledgePath = path.resolve(process.cwd(), '..', aiConfig.knowledge_file);
+  const brainPath = path.resolve(process.cwd(), '..', 'brain.md');
 
   client.on('messageCreate', async (message: Message) => {
     // Ignore bot messages
@@ -49,8 +50,16 @@ export function initAi(
         await message.channel.sendTyping();
       }
 
-      // Load knowledge fresh each time
+      // Load brain and knowledge fresh each time
+      const brain = loadKnowledge(brainPath);
       const knowledge = loadKnowledge(knowledgePath);
+
+      if (!brain) {
+        await message.reply(
+          'No brain has been set up yet. Ask a club officer to create brain.md.'
+        );
+        return;
+      }
 
       if (!knowledge) {
         await message.reply(
@@ -59,11 +68,7 @@ export function initAi(
         return;
       }
 
-      const systemPrompt = buildSystemPrompt(
-        config.org.name,
-        config.org.description,
-        knowledge
-      );
+      const systemPrompt = buildSystemPrompt(brain, knowledge);
 
       const answer = await askQuestion(question, systemPrompt, aiConfig.model);
 

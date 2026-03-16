@@ -8,6 +8,7 @@ A Discord bot for campus student organizations — automates server management s
 - **Channel Management** — Declarative channel structure defined in YAML. ClubClaw reconciles your Discord server to match the config on startup, creating missing channels and categories with proper role-based permissions.
 - **Auto-Archive** — Flags channels inactive for a configurable number of days by prefixing them with `archived-`.
 - **Scheduled Announcements** — Cron-based scheduled messages (e.g., weekly meeting reminders) plus a `/announce` slash command for ad-hoc announcements.
+- **AI Assistant** — Responds to @mentions and DMs using OpenAI. Personality and guardrails are defined in `brain.md`; club facts come from `knowledge.md`. Both files are read fresh on every message — no restart needed to update behavior.
 - **Audit Logging** — All bot actions (role changes, channel creation, messages sent) are recorded to a local SQLite database.
 
 ## Requirements
@@ -107,19 +108,34 @@ pm2 save
 pm2 startup
 ```
 
+## Content Files
+
+| File | Purpose | Read at runtime? |
+|------|---------|-----------------|
+| `brain.md` | Bot identity, personality, tone, guardrails | Yes — on every message |
+| `knowledge.md` | Club facts (meetings, roles, FAQ, curriculum) | Yes — on every message |
+| `linkedin.md` | LinkedIn posting guidelines, content pillars, guardrails | No — reference for content creation |
+
+`brain.md` is the bot's core behavior guide. It points to `knowledge.md` for club-specific questions and to `linkedin.md` for LinkedIn-related tasks. Edit these files on the server to change bot behavior without restarting.
+
 ## Project Structure
 
 ```
 clubclaw/
-  src/
-    index.ts              # Entry point — wires config, db, and modules
-    config/               # YAML config loader with Zod validation
-    db/                   # SQLite database layer (better-sqlite3)
-    bot/                  # Discord client setup and command registration
-    modules/
-      onboarding/         # Welcome messages + reaction role assignment
-      channels/           # Channel reconciliation + auto-archive
-      announcements/      # Scheduled messages + /announce command
+  brain.md                # Bot personality and behavior rules
+  knowledge.md            # Club facts and FAQ
+  linkedin.md             # LinkedIn posting guidelines
+  clubclaw/
+    src/
+      index.ts            # Entry point — wires config, db, and modules
+      config/             # YAML config loader with Zod validation
+      db/                 # SQLite database layer (better-sqlite3)
+      bot/                # Discord client setup and command registration
+      modules/
+        onboarding/       # Welcome messages + reaction role assignment
+        channels/         # Channel reconciliation + auto-archive
+        announcements/    # Scheduled messages + /announce command
+        ai/               # AI assistant (brain.md + knowledge.md → OpenAI)
 ```
 
 ## Tech Stack
