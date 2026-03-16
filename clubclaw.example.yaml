@@ -2,8 +2,8 @@
 # Copy this file to clubclaw.yaml and fill in your values.
 
 org:
-  name: "My Club"
-  description: "A student organization"
+  name: "Agentic AI @ UIUC"
+  description: "The largest student-run AI club at UIUC with 250+ members"
 
 discord:
   token: "${DISCORD_BOT_TOKEN}"
@@ -17,12 +17,12 @@ onboarding:
     method: "reaction"
     role: "Member"
   roles:
-    - name: "Team A"
-      emoji: "🅰️"
-      description: "First team"
-    - name: "Team B"
-      emoji: "🅱️"
-      description: "Second team"
+    - name: "Member"
+      emoji: "👋"
+      description: "General club member"
+    - name: "MT"
+      emoji: "⚡"
+      description: "Member-Technologist — cross-functional team role"
 
 channels:
   categories:
@@ -39,8 +39,10 @@ channels:
 announcements:
   channel: "announcements"
   scheduled:
-    - message: "Weekly meeting reminder!"
-      cron: "0 10 * * WED"
+    - message: "📢 Lecture tonight at 7 PM at SCD! See you there."
+      cron: "0 12 * * MON"
+    - message: "🛠️ Claude Code Workshop tomorrow at 6 PM at SCD!"
+      cron: "0 12 * * THU"
 
 ai:
   enabled: true
