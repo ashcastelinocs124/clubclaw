@@ -57,6 +57,8 @@ export const AiSchema = z.object({
   model: z.string().default('gpt-4o-mini'),
   knowledge_file: z.string().default('knowledge.md'),
   features: z.array(z.string()).default([]),
+  allowed_roles: z.array(z.string()).default([]),
+  rate_limit: z.number().default(10),
 });
 
 export const ConfigSchema = z.object({
