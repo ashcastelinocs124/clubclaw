@@ -53,4 +53,6 @@ ai:
   provider: "openai"
   model: "gpt-4o-mini"
   knowledge_file: "knowledge.md"
+  allowed_roles: ["Member of Technical Staff"]
+  rate_limit: 10
   features: []
