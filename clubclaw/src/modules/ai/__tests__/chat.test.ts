@@ -9,9 +9,10 @@ describe('buildSystemPrompt', () => {
     expect(prompt).toContain('Meetings on Thursdays');
   });
 
-  it('includes instruction to only answer club questions', () => {
+  it('includes guardrails and conversational tone', () => {
     const prompt = buildSystemPrompt('CS Club', undefined, '# Info');
-    expect(prompt).toContain('ONLY answer questions about the club');
+    expect(prompt).toContain('Guardrails');
+    expect(prompt).toContain('casual conversation');
   });
 
   it('handles missing description', () => {

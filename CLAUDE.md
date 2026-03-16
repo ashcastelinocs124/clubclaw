@@ -81,4 +81,10 @@ Read `memory.md` at the start of every session before doing anything else. Updat
 
 ## Completed Work
 
-> Nothing completed yet — project is in design phase (2026-03-15).
+### 2026-03-15 — ClubClaw v1 Core Implementation
+- Built Discord bot with 3 feature modules: onboarding (welcome + roles), channels (reconcile + auto-archive), announcements (cron + /announce)
+- YAML config with Zod validation and `${ENV_VAR}` resolution
+- SQLite persistence via better-sqlite3 (members, scheduled_messages, audit_log)
+- TypeScript/Node.js, discord.js, node-cron
+- 16 unit tests passing, all modules wired in entry point
+- Deployed to GitHub: https://github.com/ashcastelinocs124/clubclaw.git
