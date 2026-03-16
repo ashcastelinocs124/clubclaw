@@ -8,11 +8,14 @@ export function createClient(): Client {
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.GuildMessageReactions,
       GatewayIntentBits.MessageContent,
+      GatewayIntentBits.DirectMessages,
+      GatewayIntentBits.DirectMessageReactions,
     ],
     partials: [
       Partials.Message,
       Partials.Reaction,
       Partials.GuildMember,
+      Partials.Channel,
     ],
   });
 }
