@@ -43,6 +43,9 @@ announcements:
       cron: "0 12 * * MON"
     - message: "🛠️ Claude Code Workshop tomorrow at 6 PM at SCD!"
       cron: "0 12 * * THU"
+    - message: "📋 Exec meeting today at 3:30 PM CST! See you there."
+      cron: "0 14 * * SUN"
+      channel: "exec-channel"
 
 ai:
   enabled: true

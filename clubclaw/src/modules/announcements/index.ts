@@ -36,22 +36,24 @@ export function initAnnouncements(
       continue;
     }
 
+    const targetChannelName = scheduled.channel ?? announcementsConfig.channel;
+
     cron.schedule(scheduled.cron, async () => {
       const guild = client.guilds.cache.get(config.discord.guild_id);
       if (!guild) return;
 
       const channel = guild.channels.cache.find(
-        (ch) => ch.name === announcementsConfig.channel
+        (ch) => ch.name === targetChannelName
       ) as TextChannel | undefined;
 
       if (!channel) {
-        console.error(`Announcements channel "${announcementsConfig.channel}" not found`);
+        console.error(`Announcements channel "${targetChannelName}" not found`);
         return;
       }
 
       await channel.send(scheduled.message);
       db.logAudit('announcement', null, `Scheduled: ${scheduled.message.slice(0, 50)}`);
-      console.log(`Sent scheduled announcement to #${announcementsConfig.channel}`);
+      console.log(`Sent scheduled announcement to #${targetChannelName}`);
     });
 
     console.log(`Scheduled: "${scheduled.message.slice(0, 40)}..." at ${scheduled.cron}`);

@@ -28,3 +28,8 @@
 - **Gotcha**: AI module silently disables if `OPENAI_API_KEY` is not in `.env` — logs show `AI module: OPENAI_API_KEY not set, disabling` but easy to miss. No "AI module: initialized" = check the key
 - **Gotcha**: Channel names in `clubclaw.yaml` must exactly match Discord channel names — bot uses `channel.name ===` comparison, no fuzzy matching
 - **Decision**: Used OpenClaw's multi-channel gateway pattern and Nanobot's YAML config approach as architectural inspiration for ClubClaw
+
+### 2026-03-16 — Discord bot DMs require DirectMessages intent + Partials.Channel
+- **What:** Bot was not responding to DMs because `GatewayIntentBits.DirectMessages` and `Partials.Channel` were missing from the client config.
+- **Why it matters:** discord.js silently drops DM `messageCreate` events without these — no error logged, bot just doesn't respond.
+- **Fix/Pattern:** Always include `DirectMessages` intent and `Partials.Channel` when the bot needs to handle DMs. The partial is needed because DM channels aren't cached by default.

@@ -42,6 +42,7 @@ export const ChannelsSchema = z.object({
 export const ScheduledMessageSchema = z.object({
   message: z.string(),
   cron: z.string(),
+  channel: z.string().optional(),
 });
 
 export const AnnouncementsSchema = z.object({
