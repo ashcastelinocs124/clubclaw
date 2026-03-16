@@ -7,6 +7,7 @@ import { createClient, registerCommands } from './bot/index.js';
 import { initOnboarding } from './modules/onboarding/index.js';
 import { initChannels } from './modules/channels/index.js';
 import { initAnnouncements, getAnnouncementCommands } from './modules/announcements/index.js';
+import { initAi } from './modules/ai/index.js';
 
 async function main() {
   // 1. Load config
@@ -29,6 +30,7 @@ async function main() {
   initOnboarding(client, config, db);
   initChannels(client, config, db);
   initAnnouncements(client, config, db);
+  initAi(client, config, db);
 
   // 5. Register slash commands on ready
   client.once('ready', async (c) => {
