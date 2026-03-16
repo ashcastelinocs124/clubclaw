@@ -7,7 +7,7 @@ org:
 
 discord:
   token: "${DISCORD_BOT_TOKEN}"
-  guild_id: "YOUR_GUILD_ID_HERE"
+  guild_id: "1363233232203809080"
 
 onboarding:
   welcome_channel: "welcome"
@@ -43,6 +43,8 @@ announcements:
       cron: "0 10 * * WED"
 
 ai:
-  enabled: false
-  provider: "anthropic"
+  enabled: true
+  provider: "openai"
+  model: "gpt-4o-mini"
+  knowledge_file: "knowledge.md"
   features: []
