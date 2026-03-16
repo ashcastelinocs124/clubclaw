@@ -47,6 +47,7 @@ export const ScheduledMessageSchema = z.object({
 
 export const AnnouncementsSchema = z.object({
   channel: z.string(),
+  timezone: z.string().default('UTC'),
   scheduled: z.array(ScheduledMessageSchema).default([]),
 });
 

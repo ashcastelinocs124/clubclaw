@@ -54,7 +54,7 @@ export function initAnnouncements(
       await channel.send(scheduled.message);
       db.logAudit('announcement', null, `Scheduled: ${scheduled.message.slice(0, 50)}`);
       console.log(`Sent scheduled announcement to #${targetChannelName}`);
-    });
+    }, { timezone: announcementsConfig.timezone });
 
     console.log(`Scheduled: "${scheduled.message.slice(0, 40)}..." at ${scheduled.cron}`);
   }

@@ -38,6 +38,7 @@ channels:
 
 announcements:
   channel: "announcements"
+  timezone: "America/Chicago"
   scheduled:
     - message: "📢 Lecture tonight at 7 PM at SCD! See you there."
       cron: "0 12 * * MON"
