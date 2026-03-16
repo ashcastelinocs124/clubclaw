@@ -3,8 +3,8 @@
 The largest student-run AI club at the University of Illinois at Urbana-Champaign, with over 250 members.
 
 ## Meeting Times
-- **Lectures:** Mondays at 7 PM at SCD
-- **Claude Code Workshops:** Fridays at 6 PM at SCD
+- **Lectures:** Mondays at 7 PM CST at SCD
+- **Claude Code Workshops:** Fridays at 6 PM CST at SCD
 
 ## Lecture Curriculum
 
@@ -24,9 +24,10 @@ Our weekly lecture series covers the full stack of agentic AI:
 
 ## Club Structure
 
-We have 2 roles:
+We have 2 roles plus leadership:
+- **President** — Ash, club founder and leader
 - **Members** — General club members
-- **MTs (Member-Technologists)** — Inspired by the structure at OpenAI and Anthropic, where everyone wears multiple hats. The MT title reflects that our team members take on cross-functional responsibilities rather than being boxed into a single position.
+- **MTS (Members of Technical Staff)** — Inspired by the structure at OpenAI and Anthropic, where everyone wears multiple hats. The MTS title reflects that our team members take on cross-functional responsibilities rather than being boxed into a single position.
 
 ## How to Join
 React in #welcome to get verified. Pick your roles.
@@ -37,10 +38,10 @@ Q: What is Agentic AI @ UIUC?
 A: We are the largest student-run AI club at UIUC with 250+ members, focused on agentic AI systems — from prompt engineering to multi-agent architectures.
 
 Q: When and where do you meet?
-A: Lectures are Mondays at 7 PM at SCD. Claude Code workshops are Fridays at 6 PM at SCD.
+A: Lectures are Mondays at 7 PM CST at SCD. Claude Code workshops are Fridays at 6 PM CST at SCD.
 
-Q: What are MTs?
-A: MTs (Member-Technologists) are team members who take on cross-functional roles across the club, similar to how roles work at companies like OpenAI and Anthropic.
+Q: What are MTS?
+A: MTS (Members of Technical Staff) are team members who take on cross-functional roles across the club, similar to how roles work at companies like OpenAI and Anthropic.
 
 Q: Do I need AI experience to join?
 A: No! Our lecture series starts from foundations and builds up. Everyone is welcome.

@@ -20,9 +20,9 @@ onboarding:
     - name: "Member"
       emoji: "👋"
       description: "General club member"
-    - name: "MT"
+    - name: "MTS"
       emoji: "⚡"
-      description: "Member-Technologist — cross-functional team role"
+      description: "Member of Technical Staff — cross-functional team role"
 
 channels:
   categories:
