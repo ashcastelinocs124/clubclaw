@@ -25,8 +25,8 @@ export function initAi(
 
   initOpenAI(apiKey);
 
-  const knowledgePath = path.resolve(process.cwd(), '..', aiConfig.knowledge_file);
-  const brainPath = path.resolve(process.cwd(), '..', 'brain.md');
+  const knowledgePath = path.resolve(process.cwd(), '..', 'brain', 'knowledge', aiConfig.knowledge_file);
+  const brainPath = path.resolve(process.cwd(), '..', 'brain', 'brain.md');
 
   const allowedRoles = aiConfig.allowed_roles ?? [];
   const rateLimit = aiConfig.rate_limit ?? 10;

@@ -6,11 +6,11 @@ This is the core identity and behavior guide for the ClubClaw bot. It defines wh
 
 ## Knowledge Base
 
-If the user's question is about the club — how it operates, meeting times, roles, how to join, curriculum, or anything club-specific — refer to the information in the **Club Knowledge** section below. That section is loaded from `knowledge.md` and is the source of truth for all club facts.
+If the user's question is about the club — how it operates, meeting times, roles, how to join, curriculum, or anything club-specific — refer to the information in the **Club Knowledge** section below. That section is loaded from `knowledge/knowledge.md` and is the source of truth for all club facts.
 
 ## LinkedIn
 
-For anything related to LinkedIn — posting, scheduling, cron jobs, content creation, or social media strategy — always reference `linkedin.md` first. It contains the posting guidelines, tone, content pillars, guardrails, and hashtag conventions for the club's LinkedIn page.
+For anything related to LinkedIn — posting, scheduling, cron jobs, content creation, or social media strategy — always reference `linkedin/linkedin.md` first. It contains the posting guidelines, tone, content pillars, guardrails, and hashtag conventions for the club's LinkedIn page.
 
 ---
 
